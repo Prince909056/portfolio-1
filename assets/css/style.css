@@ -1,0 +1,554 @@
+/* =============== GOOGlE FONTS =============== */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500&family=Poppins:wght@400;500;600&family=Ubuntu:wght@500&display=swap");
+
+/* =============== CSS VARIABlES =============== */
+:root {
+  --header-height: 3rem;
+
+  /* ========== color ========== */
+  /* Change favorite color */
+  --hue-color: 250; /* Purple 250 - Green 142 -Blue 230 - Pink 340 */
+
+  /* HSl Color made */
+  --first-color: hsl(var(--hue-color), 69%, 61%);
+  --first-color-second: hsl(var(--hue-color), 69%, 61%);
+  --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+  --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+  --title-color: hsl(var(--hue-color), 8%, 15%);
+  --text-color: hsl(var(--hue-color), 8%, 45%);
+  --text-color-light: hsl(var(--hue-color), 8%, 65%);
+  --input-color: hsl(var(--hue-color), 70%, 96%);
+  --body-color: hsl(var(--hue-color), 60%, 99%);
+  --container-color: #fff;
+
+  /* ========== Font and typography ========== */
+  --body-font: "Poppins", sans-serif;
+
+  /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px .... */
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /* ========== Font weight ========== */
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /* ========== Margenes Bottom  ========== */
+  /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /* ========== z index  ========== */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+/* Font size for large devices */
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 3rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/* ========== variable  ========== */
+/* ========== Button Dark/light ========== */
+/* ========== BASE ========== */
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  margin: 0 0 var(--header-height) 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1,h2,h3,h4{
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+/* ========== Reusable CSS Classes ========== */
+.section{
+  padding: 2rem 0 4rem;
+}
+
+.section_title{
+  font-size: var(--h1-font-size);
+}
+
+.section_subtitle{
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: var(--mb-3);
+}
+
+.section_title,
+.section_subtitle{
+  text-align: center;
+}
+
+/* ========== layout ========== */
+.container{
+  max-width: 768px;
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+}
+
+.grid{
+  display: grid;
+  gap: 1.5rem;
+}
+
+.header{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color);
+}
+
+/* ========== Nav ========== */
+.nav{
+  max-width: 968px;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav_logo,
+.nav_toggle{
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+.nav_logo:hover{
+  color: var(--first-color);
+}
+
+.nav_toggle{
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.nav_toggle:hover{
+  color: var(--first-color);
+}
+
+@media screen and (max-width: 767px) {
+  .nav_menu{
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--body-color);
+    padding: 2rem 1.5rem 4rem;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, .15);
+    border-radius: 1.5rem 1.5rem 0 0;
+    transition: .3s;
+}
+
+.nav_list{
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.nav_link{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--small-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+
+.nav_link:hover{
+  color: var(--first-color);
+}
+
+.nav_icon{
+  font-size: 1.2rem;
+}
+
+.nav_close{
+  position: absolute;
+  right: 1.3rem;
+  bottom: .5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--first-color);
+}
+
+.nav_close:hover{
+  color: var(--first-color-alt);
+}
+
+/* Show menu */
+.show-menu{
+  bottom: 0;
+}
+
+/* Active link */
+
+
+/* Change background header */
+
+
+/* =============== Home =============== */
+
+.home_container{
+  gap: 1rem;
+}
+
+.home_content{
+  grid-template-columns: .5fr 3fr;
+  padding-top: 3.5rem;
+  align-items: center;
+}
+
+.home_social{
+  display: grid;
+  grid-template-columns: max-content;
+  row-gap: 1rem;
+}
+
+.home_social-icon{
+  font-size: 1.25rem;
+  color: var(--first-color);
+}
+
+.home_social-icon:hover{
+  color: var(--first-color-alt);
+}
+
+.home_img{
+  width: 200px;
+}
+
+.home_blob-img{
+  width: 200px;
+}
+
+.home_data{
+  grid-column: 1/3;
+}
+
+.home_title{
+  font-size: var(--big-font-size);
+}
+
+.home_subtitle{
+  font-size: var(--h3-font-size);
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--mb-0-75);
+}
+
+.home_description{
+  margin-bottom: var(--mb-2);
+}
+
+.home_scroll{
+  display: none;
+}
+
+.home_scroll-button{
+  color: var(--first-color);
+  transition: .3s;
+}
+
+.home_scroll-button:hover{
+  transform: translateY(.25rem);
+}
+
+.home_scroll-mouse{
+  font-size: 2rem;
+}
+
+.home_scroll-name{
+  font-size: var(--small-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  margin-right: var(--mb-0-25);
+}
+
+.home_scroll-arrow{
+  font-size: 1.25rem;
+}
+
+/* ========== Button ========== */
+.button{
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 1rem;
+  border-radius: .5rem;
+  font-weight: var(--font-medium);
+}
+
+.button:hover{
+  background-color: var(--first-color-alt);
+}
+
+.button_icon{
+  font-size: 1.25rem;
+  margin-left: var(--mb-0-5);
+  transition: .3s;
+}
+
+.button-flex{
+  display: inline-flex;
+  align-items: center;
+}
+
+/* =============== About =============== */
+.about_img{
+  width: 200px;
+  border-radius: .5rem;
+  justify-self: center;
+  align-self: center;
+}
+
+.about_description{
+  text-align: center;
+  margin-bottom: var(--mb-2-5);
+}
+
+.about_info{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: var(--mb-2-5);
+}
+
+.about_info-title{
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+}
+
+.about_info-name{
+  font-size: var(--smaller-font-size);
+}
+
+.about_info-title,
+.about_info-name{
+  display: block;
+  text-align: center;
+}
+
+.about_buttons{
+  display: flex;
+  justify-content: center;
+}
+
+/* =============== Skills =============== */
+.skills_container{
+  row-gap: 0;
+}
+
+.skills_header{
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--mb-2-5);
+  cursor: pointer;
+}
+
+.skills_icon,
+.skills_arrow{
+  font-size: 2rem;
+  color: var(--first-color);
+}
+
+.skills_icon{
+  margin-right: var(--mb-0-75);
+}
+
+.skills_title{
+  font-size: var(--h3-font-size);
+}
+
+.skills_subtitle{
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
+}
+
+.skills_arrow{
+  margin-left: auto;
+  transition: .4s;
+}
+
+.skills_list{
+  row-gap: 1.5rem;
+  padding-left: 2.7rem;
+}
+
+.skills_titles{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--mb-0-5);
+}
+
+.skills_name{
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+}
+
+.skills_bar,
+.skills_percentage{
+  height: 5px;
+  border-radius: .25rem;
+}
+
+.skills_bar{
+  background-color: var(--first-color-lighter);
+}
+
+.skills_percentage{
+  display: block;
+  background-color: var(--first-color);
+}
+
+.skills_html{
+  width: 90%;
+}
+
+.skills_css{
+  width: 80%;
+}
+
+.skills_javascript{
+  width: 60%;
+}
+
+.skills_react{
+  width: 85%;
+}
+
+.skills_php{
+  width: 80%;
+}
+
+.skills_node{
+  width: 70%;
+}
+
+.skills_firebase{
+  width: 90%;
+}
+
+.skills_python{
+  width: 55%;
+}
+
+.skills_figma{
+  width: 90%;
+}
+
+.skills_sketch{
+  width: 85%;
+}
+
+.skills_photoshop{
+  width: 85%;
+}
+
+.skills_close .skills_list{
+  height: 0;
+  overflow: hidden;
+}
+
+.skills_open .skills_list{
+  height: max-content;
+  margin-bottom: var(--mb-2-5);
+}
+
+.skills_open .skills_arrow{
+  transform: rotate(-180deg);
+}
+
+/* =============== Qualification =============== */
+.qualification_tabs{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: var(--mb-2);
+}
+
+.qualification_button{
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+}
+
+.qualification_button:hover{
+  color: var(--first-color);
+}
+
+.qualification_icon{
+  font-size: 1.8rem;
+  margin-right: var(--mb-0-25);
+}
+
+.qualification_data{
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  column-gap: 1.5rem;
+}
+
+.qualification_title{
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+}
+
+.qualification_subtitle{
+  display: inline-block;
+  font-size: var(--small-font-size);
+  margin-bottom: var(--mb-1);
+}
+
+.qualification_calendar{
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-light);
+}
+
+/* =============== Services =============== */
+
+
+/* Active Modal */
